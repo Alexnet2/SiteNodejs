@@ -1,0 +1,45 @@
+<div style="text-align: center;font-weight: bold;">
+    <h2>List of Posts </h2>
+</div>
+<form action="/card/add" method="GET">
+    <button class="btn btn-primary" type="submit">
+        Add
+    </button>
+</form>
+
+<table class="table ">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+            <th scope="col">Updated</th>
+            <th scope="col">Created</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+
+    <body style="font-size: 10pt;">
+        {{#each posts}}
+        <tr>
+            <td>
+                {{dataValues.title}}
+            </td>
+            <td>
+                {{dataValues.content}}
+            </td>
+            <td>
+                {{dataValues.updatedAt}}
+            </td>
+            <td>
+                {{dataValues.createdAt}}
+            </td>
+            <td>
+                <form action="/card/delete" method="POST">
+                    <input type="text" style="display: none;" value="{{dataValues.id}}" name="id">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </body>
+</table>
